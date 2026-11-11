@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "ExamPro backend",
   "private": true,
-  "type": "module",
   "main": "server.js",
   "author": "HDM",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "migrate": "node scripts/migrateToMultiTenant.js",
     "drop-indexes": "node scripts/dropOldIndexes.js",
     "seed-departments": "node scripts/seedDepartments.js",
-    "pwa": "node scripts/generate-pwa-assets.js",
+    "pwa": "node scripts/generate-pwa-assets.mjs",
     "build": "npm run install:client && npm run pwa && npm run build:client",
     "install:client": "npm --prefix client install --include=dev",
     "build:client": "npm --prefix client run build"
