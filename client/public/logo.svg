@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ExamPro">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background (safe area for maskable: 80% of canvas) -->
+  <rect width="512" height="512" rx="96" fill="url(#g)"/>
+
+  <!-- Document / exam sheet -->
+  <g fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <!-- paper outline -->
+    <path d="M160 120 h160 l72 72 v200 a16 16 0 0 1 -16 16 h-216 a16 16 0 0 1 -16 -16 v-256 a16 16 0 0 1 16 -16 z"/>
+    <!-- folded corner -->
+    <path d="M320 120 v72 h72"/>
+    <!-- checklist lines -->
+    <path d="M200 248 h96"/>
+    <path d="M200 296 h96"/>
+    <path d="M200 344 h64"/>
+  </g>
+
+  <!-- Checkmark badge -->
+  <g>
+    <circle cx="352" cy="352" r="64" fill="#ffffff"/>
+    <path d="M320 352 l22 22 44 -44"
+          fill="none" stroke="#2563eb" stroke-width="20"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -30,8 +30,7 @@ Thumbs.db
 *.swp
 *.swo
 
-# Auto-generated public folder
-public/
+
 
 # Temp
 tmp/
