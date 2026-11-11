@@ -1,7 +1,11 @@
-require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import 'dotenv/config';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 const ROOT = path.join(__dirname, '..');
 const CLIENT_PUBLIC = path.join(ROOT, 'client', 'public');
@@ -82,62 +86,20 @@ const generateManifest = () => {
     theme_color: '#2563eb',
     orientation: 'portrait',
     icons: [
-      {
-        src: '/icons/icon-72x72.png',
-        sizes: '72x72',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-96x96.png',
-        sizes: '96x96',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-128x128.png',
-        sizes: '128x128',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-144x144.png',
-        sizes: '144x144',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-152x152.png',
-        sizes: '152x152',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-384x384.png',
-        sizes: '384x384',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/icon-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: '/icons/maskable-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'maskable',
-      },
-      {
-        src: '/icons/maskable-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'maskable',
-      },
+      { src: '/icons/icon-72x72.png',   sizes: '72x72',   type: 'image/png' },
+      { src: '/icons/icon-96x96.png',   sizes: '96x96',   type: 'image/png' },
+      { src: '/icons/icon-128x128.png', sizes: '128x128', type: 'image/png' },
+      { src: '/icons/icon-144x144.png', sizes: '144x144', type: 'image/png' },
+      { src: '/icons/icon-152x152.png', sizes: '152x152', type: 'image/png' },
+      { src: '/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { src: '/icons/icon-384x384.png', sizes: '384x384', type: 'image/png' },
+      { src: '/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+      { src: '/icons/maskable-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+      { src: '/icons/maskable-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
     ],
   };
 
-  const outputPath = path.join(CLIENT_PUBLIC, 'manifest');
+  const outputPath = path.join(CLIENT_PUBLIC, 'manifest.webmanifest');
   fs.writeFileSync(outputPath, JSON.stringify(manifest, null, 2));
   console.log('Generated: manifest.webmanifest');
 };
