@@ -8,12 +8,17 @@ const fs = require('fs');
 require('dotenv').config();
 
 const connectDB = require('./config/db');
+const { startKeepAlive } = require('./config/keepAlive');
 const { errorHandler } = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
 
 const apiRoutes = require('./routes/index');
 
 const app = express();
+
+// Render sits behind a single reverse proxy.
+// trust proxy = 1 so req.ip resolves to the real client (needed by express-rate-limit).
+app.set('trust proxy', 1);
 
 connectDB();
 
@@ -70,6 +75,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
   console.log(`Server running on port ${PORT}`);
+
+  // Start keep-alive after the server is accepting connections.
+  startKeepAlive();
 });
 
 process.on('unhandledRejection', (err) => {
